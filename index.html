@@ -465,6 +465,9 @@ function my_sidebar_classes() {
 			<p>Determines who can use the editor. By default this returns is_user_logged_in() and current_user_can('edit_posts')</p>
 			<pre><code class="language-php">lasso_user_can</code></pre>
 
+			<h3>Defines</h3><hr class="notop">
+			<p>Adding this define will remove the License panel, and links to Lasso website and documentation. It essentially white-labeles the plugin so there's no confusion for the agency.</p>
+			<pre><code class="language-php">define('LASSO_AGENCY_MODE',true);</code></pre>
 
 		</section>
 		<section id="sample-addon">
