@@ -14,7 +14,6 @@
 	<meta name="copyright" content="Aesopinteractive LLC">
 	<meta name="date" content="2015-01-21T00:00:00+01:00">
 	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
-	 <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
 
 	<style>
@@ -123,7 +122,10 @@
 			<li><a href="#setup" title="Setup">Setup</a></li>
 			<li><a href="#editing" title="Editing">Editing</a></li>
 			<li><a href="#components" title="Components">Components</a></li>
-			<li><a href="#developers" title="Developers">Developers</a></li>
+			<li><a href="#filters" title="Filters">Filters</a></li>
+			<li><a href="#actions" title="Actions">Actions</a></li>
+			<li><a href="#sample-addon" title="Sample Addon">Sample Addon</a></li>
+
 
 		</ul>
 
@@ -132,14 +134,12 @@
 	<div id="documenter_content">
 
 		<section id="documenter_cover">
-			<h1>Lasso</h1>
 			<h2>Plugin Documentation</h2>
 			<hr>
 			<ul>
-				<li>created: 01/21/2015</li>
-				<li>latest update: 02/07/2015</li>
-				<li>by: Nick Haskins</li>
-				<li>email: <a href="mailto:help@lasso.is">help@lasso.is</a></li>
+				<li><strong>Current Version:</strong> 0.8.6</li>
+				<li><strong>Docs Last Updated:</strong> 03/15/2015</li>
+				<li><strong>Email:</strong> <a href="mailto:help@lasso.is">help@lasso.is</a></li>
 			</ul>
 			<p>Lasso is a front-end editor plugin for WordPress allows you to create, edit, and publish content on the front-end, and was originally designed to work closely with Aesop Story Engine, the free WordPress plugin for storytelling. This is the very same editor found on <a href="https://story.am">Story.AM</a>. Out-of-the-box it works on any post type whether it be posts, pages, or custom post types. It also features built-in support for editing standard images inserted via the WordPress post editor, as well as front-end support for changing the title and featured image.</p>
 			<p>If you're utilizing Aesop Story Engine, the components can be moved freely around the post, and most component settings are adjusted in real-time. This includes gallery creation and editing, all done on the front-end.</p>
@@ -262,148 +262,166 @@
 
 		</section>
 
-		<section id="developers">
-			<div class="page-header"><h3>Developers</h3><hr class="notop"></div>
-			<p>Lasso is amazingly extensive. In fact, you don't even have to have Aesop Story Engine active. There are multiple ways to extend the editor, and/or Aesop Story Engine. You can use it on custom fields without Aesop, or you can create custom components for Aesop Story Engine and use them within Lasso. You can also create individual custom components that are not made of shortcodes, with options as data attributes. All possible through actions and filters.</p>
+		<section id="filters">
+			<div class="page-header"><h3>Filters</h3><hr class="notop"></div>
 
-			<h3>Filters</h3><hr class="notop">
-			<pre>lasso_runs_on</pre>
 			<p>Filter where Lasso can be used and who can use it. By default this is set to is_singular() and lasso_user_can() which equates to edit_posts.</p>
-			<hr />
+			<pre><code class="language-php">lasso_runs_on</code></pre>
 
-			<pre>apply_filters('lasso_localized_objects', $args )</pre>
 			<p>Filter the array of objects being localized with js</p>
-			<hr />
+			<pre><code class="language-php">
+add_filter('lasso_localized_objects', 'my_localized_objects' );
+function my_localized_objects( $args ) {
+	// your new args
+	$my_args = array(
+	    'this' => 'that'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
-			<pre>apply_filters('lasso_insert_gallery_args', $args )</pre>
 			<p>Filter the array of arguments for saving a post gallery.</p>
-			<hr />
+			<pre><code class="language-php">apply_filters('lasso_insert_gallery_args', $args )</code></pre>
 
-			<pre>apply_filters('lasso_insert_object_args', $args )</pre>
 			<p>Filter the array of arguments for inserting a new post.</p>
-			<hr />
+			<pre><code class="language-php">apply_filters('lasso_insert_object_args', $args )</code></pre>
 
-			<pre>apply_filters('lasso_object_status_update_args', $args )</pre>
 			<p>Filter the array of arguments for updating the status of a post object. I.e, draft to publish, etc.</p>
-			<hr />
+			<pre><code class="language-php">apply_filters('lasso_object_status_update_args', $args )</code></pre>
 
-			<pre>apply_filters('lasso_object_save_args', $args )</pre>
 			<p>Filter the array of arguments for saving an existing post object.</p>
-			<hr />
+			<pre><code class="language-php">apply_filters('lasso_object_save_args', $args )</code></pre>
 
-			<pre>apply_filters('lasso_object_publish_args', $args )</pre>
 			<p>Filter the array of arguments for publishing a new post object.</p>
-			<hr />
+			<pre><code class="language-php">apply_filters('lasso_object_publish_args', $args )</code></pre>
 
-			<pre>apply_filters('lasso_title_updated_args', $args )</pre>
 			<p>Filter the array of arguments for updating a post object title.</p>
-			<hr />
+			<pre><code class="language-php">apply_filters('lasso_title_updated_args', $args )</code></pre>
 
-			<pre>lasso_components</pre>
 			<p>Filter the list of components available to the editor. Here are a some examples.</p>
-			<hr />
+			<pre><code class="language-php">lasso_components</code></pre>
 
-			<pre>lasso_control_classes</pre>
 			<p>Add a CSS class to the control bar.</p>
-			<hr />
+			<pre><code class="language-php">lasso_control_classes</code></pre>
 
-			<pre>lasso_sidebar_classes</pre>
 			<p>Add a CSS class to the settings sidebar.</p>
-			<hr />
+			<pre><code class="language-php">lasso_sidebar_classes</code></pre>
 
-			<pre>lasso_toolbar_classes</pre>
 			<p>Add a CSS class to the text toolbar.</p>
-			<hr />
+			<pre><code class="language-php">lasso_toolbar_classes</code></pre>
 
-			<pre>lasso_component_classes</pre>
 			<p>Add a CSS class to the component settings toolbar.</p>
-			<hr />
+			<pre><code class="language-php">lasso_component_classes</code></pre>
 
-			<pre>lasso_modal_settings_classes</pre>
 			<p>Add a CSS class to the post settings modal.</p>
-			<hr />
+			<pre><code class="language-php">lasso_modal_settings_classes</code></pre>
 
-			<pre>lasso_modal_post_classes</pre>
 			<p>Add a CSS class to the post settings modal.</p>
-			<hr />
+			<pre><code class="language-php">lasso_modal_post_classes</code></pre>
 
-			<pre>lasso_wpimg_classes</pre>
 			<p>Add a CSS class to the wrapper used to edit WordPress inserted images.</p>
-			<hr />
+			<pre><code class="language-php">lasso_wpimg_classes</code></pre>
 
-			<pre>lasso_custom_options</pre> 
 			<p>Add an arrayof custom options that represent all custom components.</p>
-			<hr />
+			<pre><code class="language-php">lasso_custom_options</code></pre> 
 
-			<pre>lasso_capabilities</pre>
 			<p>Filter the capability level for the editor (default is edit_posts).</p>
+			<pre><code class="language-php">lasso_capabilities</code></pre>
 
 			<h3>Actions</h3><hr class="notop">
 
-			<pre>do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</pre>
 			<p>Fired when a new gallery is created.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</code></pre>
 
-			<pre>do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</pre>
 			<p>Fired when an existing gallery is saved.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</code></pre>
 
-			<pre>do_action( 'lasso_featured_image_set', $postid, $image_id, $userid );</pre>
 			<p>Fired when the featured image is set.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_featured_image_set', $postid, $image_id, $userid );</code></pre>
 
-			<pre>do_action( 'lasso_new_object', $postid, $object, $title, $userid );</pre>
 			<p>Fired when a new post is created.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_new_object', $postid, $object, $title, $userid );</code></pre>
 
-			<pre>do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </pre>
 			<p>This is fired when an existing post is updated.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </code></pre>
 
-			<pre>do_action( 'lasso_post_saved', $postid, $content, $userid );</pre>
 			<p>Fired when an existing post is saved.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_post_saved', $postid, $content, $userid );</code></pre>
 
-			<pre>do_action( 'lasso_post_published', $postid, $content, $userid ;</pre>
 			<p>Fired when a post is published from draft.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_post_published', $postid, $content, $userid ;</code></pre>
 
-			<pre>do_action( 'lasso_title_updated', $postid, $title, $userid );</pre>
 			<p>Fired when the title is updated.</p>
-			<hr />
+			<pre><code class="language-php">do_action( 'lasso_title_updated', $postid, $title, $userid );</code></pre>
 
-			<pre>lasso_toolbar_components</pre>
 			<p>Fired at the end of the list of components in the drop-up menu.</p>
-			<hr />
+			<pre><code class="language-php">lasso_toolbar_components</code></pre>
 
-			<pre>lasso_modal_post_form</pre>
 			<p>Fired at the end of the post settings form in the post settings modal.</p>
-			<hr />
+			<pre><code class="language-php">lasso_modal_post_form</code></pre>
 
-			<pre>lasso_modal_post_form_footer</pre>
 			<p>Fired at the end of the post settings form in the post settings modal footer typically used for inserting hidden form fields.</p>
-			<hr />
+			<pre><code class="language-php">lasso_modal_post_form_footer</code></pre>
+
+		</section>
+		<section id="actions">
+			<div class="page-header"><h3>Actions</h3><hr class="notop"></div>
+
+			<p>Fired when a new gallery is created.</p>
+			<pre><code class="language-php">do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</code></pre>
+
+			<p>Fired when an existing gallery is saved.</p>
+			<pre><code class="language-php">do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</code></pre>
+
+			<p>Fired when the featured image is set.</p>
+			<pre><code class="language-php">do_action( 'lasso_featured_image_set', $postid, $image_id, $userid );</code></pre>
+
+			<p>Fired when a new post is created.</p>
+			<pre><code class="language-php">do_action( 'lasso_new_object', $postid, $object, $title, $userid );</code></pre>
+
+			<p>This is fired when an existing post is updated.</p>
+			<pre><code class="language-php">do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </code></pre>
+
+			<p>Fired when an existing post is saved.</p>
+			<pre><code class="language-php">do_action( 'lasso_post_saved', $postid, $content, $userid );</code></pre>
+
+			<p>Fired when a post is published from draft.</p>
+			<pre><code class="language-php">do_action( 'lasso_post_published', $postid, $content, $userid ;</code></pre>
+
+			<p>Fired when the title is updated.</p>
+			<pre><code class="language-php">do_action( 'lasso_title_updated', $postid, $title, $userid );</code></pre>
+
+			<p>Fired at the end of the list of components in the drop-up menu.</p>
+			<pre><code class="language-php">lasso_toolbar_components</code></pre>
+
+			<p>Fired at the end of the post settings form in the post settings modal.</p>
+			<pre><code class="language-php">lasso_modal_post_form</code></pre>
+
+			<p>Fired at the end of the post settings form in the post settings modal footer typically used for inserting hidden form fields.</p>
+			<pre><code class="language-php">lasso_modal_post_form_footer</code></pre>
 
 			<h3>Pluggable Functions</h3><hr class="notop">
 
-			<pre>lasso_user_can</pre>
 			<p>Determines who can use the editor. By default this returns is_user_logged_in() and current_user_can('edit_posts')</p>
+			<pre><code class="language-php">lasso_user_can</code></pre>
 
-			<p class="info">All component functions inside public/includes/components.php are pluggable</p>
 
-			<hr />
-			<h3>Sample Add-on Plugin</h3><hr class="notop">
+		</section>
+		<section id="sample-addon">
+			<div class="page-header"><h3>Sample Addon</h3><hr class="notop"></div>
+
 			<p>Hit the link below for a sample plugin that demonstrates how to add a custom component in two different ways; one using a shortcode, and one using the markup of your choice. Component options are added as data-attributes and are only shown if the user is logged in, and if that user has the correct capabilities. The settings in the settings panel are then "mapped" to the data-attributes on the fly. This is how you're able to use a component that's in shortcode form, or just normal markup. Skies the limit!</p>
 
 			<a href="https://github.com/AesopInteractive/sample-addon">https://github.com/AesopInteractive/sample-addon</a>
 
-		</section>
+			<p class="info">All component functions inside public/includes/components.php are pluggable</p>
 
+		</section>
 	</div>
 	<script src="assets/js/jquery.js"></script>
 	<script src="assets/js/jquery.scrollTo.js"></script>
 	<script src="assets/js/jquery.easing.js"></script>
-<script src="assets/js/google-code-prettify/prettify.js"></script> 
+	<script src="assets/js/prism.js"></script> 
 	<script>document.createElement('section');var duration='500',easing='swing';</script>
 	<script src="assets/js/script.js"></script>
 </body>
