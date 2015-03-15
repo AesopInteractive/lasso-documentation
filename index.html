@@ -269,22 +269,40 @@
 			<pre><code class="language-php">lasso_runs_on</code></pre>
 
 			<p>Filter the array of objects being localized with js</p>
-			<pre><code class="language-php">
-add_filter('lasso_localized_objects', 'my_localized_objects' );
+<pre><code class="language-php">
+add_filter('lasso_localized_objects', 'my_localized_objects', 10, 1 );
 function my_localized_objects( $args ) {
 	// your new args
 	$my_args = array(
-	    'this' => 'that'
+	    'foo' => 'bar'
 	);
 	// return and merge with the existing args
 	return array_merge( $args, $my_args );
 }</code></pre>
 
 			<p>Filter the array of arguments for saving a post gallery.</p>
-			<pre><code class="language-php">apply_filters('lasso_insert_gallery_args', $args )</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_insert_gallery_args', 'my_gallery_args', 10, 1 );
+function my_gallery_args( $args ) {
+	// your new args
+	$my_args = array(
+	    'foo' => 'bar'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
 			<p>Filter the array of arguments for inserting a new post.</p>
-			<pre><code class="language-php">apply_filters('lasso_insert_object_args', $args )</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_insert_object_args', 'my_object_args', 10, 1 );
+function my_object_args( $args ) {
+	// your new args
+	$my_args = array(
+	    'foo' => 'bar'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
 			<p>Filter the array of arguments for updating the status of a post object. I.e, draft to publish, etc.</p>
 			<pre><code class="language-php">apply_filters('lasso_object_status_update_args', $args )</code></pre>
