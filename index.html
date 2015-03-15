@@ -364,7 +364,23 @@ function my_title_updated_args( $args ) {
 
 			<h5>Available components</h5>
 			<p>Filter the list of components available to the editor. Here are a some examples.</p>
-			<pre><code class="language-php">lasso_components</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_components', 'my_components');
+function my_components() {
+	// return your own options or merge with array_merge
+	$components = array(
+		'foo' => array(
+			'name' => 'Name of Component',
+			'content' => callback()
+		),
+		'bar' => array(
+			'name' => 'Another Component',
+			'content' => callback();
+		)
+	);
+
+	return $components;
+}</code></pre>
 
 			<h5>Add CSS class to control bar</h5>
 			<p>Add a CSS class to the control bar.</p>
@@ -386,27 +402,98 @@ function my_sidebar_classes() {
 
 			<h5>Add CSS class to toolbar</h5>
 			<p>Add a CSS class to the text toolbar.</p>
-			<pre><code class="language-php">lasso_toolbar_classes</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_toolbar_classes', 'my_toolbar_classes');
+function my_toolbar_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
 
 			<h5>Add CSS class to toolbar</h5>
 			<p>Add a CSS class to the component settings toolbar.</p>
-			<pre><code class="language-php">lasso_component_classes</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_component_classes', 'my_component_classes');
+function my_component_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
 
 			<h5>Add CSS class to settings modal</h5>
 			<p>Add a CSS class to the post settings modal.</p>
-			<pre><code class="language-php">lasso_modal_settings_classes</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_modal_settings_classes', 'my_modal_settings_classes');
+function my_modal_settings_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
 
 			<h5>Add CSS class to new post modal</h5>
 			<p>Add a CSS class to the post settings modal.</p>
-			<pre><code class="language-php">lasso_modal_post_classes</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_modal_post_classes', 'my_modal_post_classes');
+function my_modal_post_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
 
 			<h5>Add CSS class to WordPress image wrapper</h5>
 			<p>Add a CSS class to the wrapper used to edit WordPress inserted images.</p>
-			<pre><code class="language-php">lasso_wpimg_classes</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_wpimg_classes', 'my_wpimg_classes');
+function my_wpimg_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
 
 			<h5>Custom Options Array</h5>
-			<p>Add an arrayof custom options that represent all custom components.</p>
-			<pre><code class="language-php">lasso_custom_options</code></pre>
+			<p>Add an array of custom options that represent all custom components.</p>
+<pre><code class="language-php">
+add_filter('lasso_custom_options', 'my_custom_options');
+function my_custom_options(){
+	$settings = array(
+		'docs-image' 				=> array(
+			'name' 				=> 'Image',
+			'type' 				=> 'single',
+			'atts' 				=> array(
+				'src' 			=> array(
+					'type'		=> 'media_upload',
+					'default' 	=> '',
+					'desc' 		=> 'Image URL',
+					'tip'		=> 'URL of IMage'
+				)
+			),
+			'desc' 				=> 'Creates an image'
+		),
+		'docs-sketchfab' 			=> array(
+			'name' 				=> 'Sketchfab',
+			'type' 				=> 'single',
+			'atts' 				=> array(
+				'model' 			=> array(
+					'type'		=> 'text',
+					'default' 	=> '',
+					'desc' 		=> 'Sketchfab Model ID',
+					'tip'		=> 'ID of the Sketcfab Model'
+				)
+			),
+			'desc' 				=> 'Creates an Sketchfab image'
+		),
+		'docs-video' 			=> array(
+			'name' 				=> 'Video',
+			'type' 				=> 'single',
+			'atts' 				=> array(
+				'id' 			=> array(
+					'type'		=> 'text',
+					'default' 	=> '',
+					'desc' 		=> 'YouTube Video ID',
+					'tip'		=> 'URL of Video'
+				)
+			),
+			'desc' 				=> 'Creates an embeddable video'
+		)
+	);
+
+	return $settings;
+}</code></pre>
 
 			<h5>Capability Level</h5>
 			<p>Filter the capability level for the editor (default is edit_post).</p>
