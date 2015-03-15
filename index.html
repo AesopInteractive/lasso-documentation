@@ -374,7 +374,8 @@ function my_control_classes() {
 	// return your class
 	return 'my-class';
 }</code></pre>
-			<h5>Capability</h5>
+
+			<h5>Add CSS class to sidebar</h5>
 			<p>Add a CSS class to the settings sidebar.</p>
 <pre><code class="language-php">
 add_filter('lasso_sidebar_classes', 'my_sidebar_classes');
@@ -383,7 +384,7 @@ function my_sidebar_classes() {
 	return 'my-class';
 }</code></pre>
 
-			<h5>Add CSS class to sidebar</h5>
+			<h5>Add CSS class to toolbar</h5>
 			<p>Add a CSS class to the text toolbar.</p>
 			<pre><code class="language-php">lasso_toolbar_classes</code></pre>
 
@@ -461,36 +462,47 @@ function my_sidebar_classes() {
 		<section id="actions">
 			<div class="page-header"><h3>Actions</h3><hr class="notop"></div>
 
+			<h5>New gallery created</h5>
 			<p>Fired when a new gallery is created.</p>
 			<pre><code class="language-php">do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</code></pre>
 
+			<h5>Existing gallery saved</h5>
 			<p>Fired when an existing gallery is saved.</p>
 			<pre><code class="language-php">do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</code></pre>
 
+			<h5>Featured image set</h5>
 			<p>Fired when the featured image is set.</p>
 			<pre><code class="language-php">do_action( 'lasso_featured_image_set', $postid, $image_id, $userid );</code></pre>
 
+			<h5>New post created</h5>
 			<p>Fired when a new post is created.</p>
 			<pre><code class="language-php">do_action( 'lasso_new_object', $postid, $object, $title, $userid );</code></pre>
 
+			<h5>Existing post updated</h5>
 			<p>This is fired when an existing post is updated.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </code></pre>
 
+			<h5>Existing post saved</h5>
 			<p>Fired when an existing post is saved.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_saved', $postid, $content, $userid );</code></pre>
 
+			<h5>Post transitioned from draft to publish</h5>
 			<p>Fired when a post is published from draft.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_published', $postid, $content, $userid ;</code></pre>
 
+			<h5>Title updated</h5>
 			<p>Fired when the title is updated.</p>
 			<pre><code class="language-php">do_action( 'lasso_title_updated', $postid, $title, $userid );</code></pre>
 
+			<h5>Add components</h5>
 			<p>Fired at the end of the list of components in the drop-up menu.</p>
 			<pre><code class="language-php">lasso_toolbar_components</code></pre>
 
+			<h5>Add fields in post settings modal form</h5>
 			<p>Fired at the end of the post settings form in the post settings modal.</p>
 			<pre><code class="language-php">lasso_modal_post_form</code></pre>
 
+			<h5>Add hidden fields in post settings modal form</h5>
 			<p>Fired at the end of the post settings form in the post settings modal footer typically used for inserting hidden form fields.</p>
 			<pre><code class="language-php">lasso_modal_post_form_footer</code></pre>
 
