@@ -104,9 +104,9 @@ strong{
 	max-width:760px;
 }
 #documenter_sidebar{
-	-moz-box-shadow:0 0 6px rgba(3,3,3,0.6);
-	-webkit-box-shadow:0 0 6px rgba(3,3,3,0.6);
-	box-shadow:0 0 6px rgba(3,3,3,0.6);
+	-moz-box-shadow:inset -6px 0 6px -3px rgba(3,3,3,0.6);
+	-webkit-box-shadow:inset -6px 0 6px -3px rgba(3,3,3,0.6);
+	box-shadow:inset -6px 0 6px -3px rgba(3,3,3,0.6);
 	position:fixed;
 	left:0;
 	width:150px;
