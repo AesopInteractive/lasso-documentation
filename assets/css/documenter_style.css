@@ -290,8 +290,8 @@ noscript p{
 }
 #documenter_content .warning{
 	padding:10px 10px 10px 30px;
-	border:1px solid #be1f33;
-	background-color:#be1f33;
+	border:1px solid #d9534f;
+	background-color:#d9534f;
 	background-image:url(img/warning.png);
 	background-repeat:no-repeat;
 	background-position: 8px 11px;
@@ -299,11 +299,13 @@ noscript p{
 }
 #documenter_content .info{
 	padding:10px 10px 10px 30px;
-	border:1px solid #6AB3FF;
-	background-color:#A3D0FF;
+	border:1px solid #5bc0de;
+	background-color:#5bc0de;
 	background-image:url(img/info.png);
 	background-repeat:no-repeat;
 	background-position: 8px 11px;
+	color:white;
+	text-shadow:0 1px 1px rgba(0,0,0,0.2);
 }
 #documenter_content div.alert {
   padding: 8px 35px 8px 14px;
