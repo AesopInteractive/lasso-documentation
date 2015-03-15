@@ -265,9 +265,11 @@
 		<section id="filters">
 			<div class="page-header"><h3>Filters</h3><hr class="notop"></div>
 
+			<h5>Capability</h5>
 			<p>Filter where Lasso can be used and who can use it. By default this is set to is_singular() and lasso_user_can() which equates to edit_posts.</p>
 			<pre><code class="language-php">lasso_runs_on</code></pre>
 
+			<h5>Localized objects</h5>
 			<p>Filter the array of objects being localized with js</p>
 <pre><code class="language-php">
 add_filter('lasso_localized_objects', 'my_localized_objects', 10, 1 );
@@ -280,6 +282,7 @@ function my_localized_objects( $args ) {
 	return array_merge( $args, $my_args );
 }</code></pre>
 
+			<h5>Saving a gallery</h5>
 			<p>Filter the array of arguments for saving a post gallery.</p>
 <pre><code class="language-php">
 add_filter('lasso_insert_gallery_args', 'my_gallery_args', 10, 1 );
@@ -292,6 +295,7 @@ function my_gallery_args( $args ) {
 	return array_merge( $args, $my_args );
 }</code></pre>
 
+			<h5>Inserting a post</h5>
 			<p>Filter the array of arguments for inserting a new post.</p>
 <pre><code class="language-php">
 add_filter('lasso_insert_object_args', 'my_object_args', 10, 1 );
@@ -304,80 +308,151 @@ function my_object_args( $args ) {
 	return array_merge( $args, $my_args );
 }</code></pre>
 
+			<h5>Updating a post</h5>
 			<p>Filter the array of arguments for updating the status of a post object. I.e, draft to publish, etc.</p>
-			<pre><code class="language-php">apply_filters('lasso_object_status_update_args', $args )</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_object_status_update_args', 'my_update_args', 10, 1 );
+function my_update_args( $args ) {
+	// your new args
+	$my_args = array(
+	    'foo' => 'bar'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
+			<h5>Saving a post</h5>
 			<p>Filter the array of arguments for saving an existing post object.</p>
-			<pre><code class="language-php">apply_filters('lasso_object_save_args', $args )</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_object_save_args', 'my_object_save_args', 10, 1 );
+function my_object_save_args( $args ) {
+	// your new args
+	$my_args = array(
+	    'foo' => 'bar'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
+
+			<h5>Publishing a post</h5>
 			<p>Filter the array of arguments for publishing a new post object.</p>
-			<pre><code class="language-php">apply_filters('lasso_object_publish_args', $args )</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_object_publish_args', 'my_object_publish_args', 10, 1 );
+function my_object_publish_args( $args ) {
+	// your new args
+	$my_args = array(
+	    'foo' => 'bar'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
+
+			<h5>Updating post title</h5>
 			<p>Filter the array of arguments for updating a post object title.</p>
-			<pre><code class="language-php">apply_filters('lasso_title_updated_args', $args )</code></pre>
+<pre><code class="language-php">
+add_filter('lasso_title_updated_args', 'my_title_updated_args', 10, 1 );
+function my_title_updated_args( $args ) {
+	// your new args
+	$my_args = array(
+	    'foo' => 'bar'
+	);
+	// return and merge with the existing args
+	return array_merge( $args, $my_args );
+}</code></pre>
 
+			<h5>Available components</h5>
 			<p>Filter the list of components available to the editor. Here are a some examples.</p>
 			<pre><code class="language-php">lasso_components</code></pre>
 
+			<h5>Add CSS class to control bar</h5>
 			<p>Add a CSS class to the control bar.</p>
-			<pre><code class="language-php">lasso_control_classes</code></pre>
-
+<pre><code class="language-php">
+add_filter('lasso_control_classes', 'my_control_classes');
+function my_control_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
+			<h5>Capability</h5>
 			<p>Add a CSS class to the settings sidebar.</p>
-			<pre><code class="language-php">lasso_sidebar_classes</code></pre>
-
+<pre><code class="language-php">
+add_filter('lasso_sidebar_classes', 'my_sidebar_classes');
+function my_sidebar_classes() {
+	// return your class
+	return 'my-class';
+}</code></pre>
+			<h5>Capability</h5>
 			<p>Add a CSS class to the text toolbar.</p>
 			<pre><code class="language-php">lasso_toolbar_classes</code></pre>
 
+			<h5>Capability</h5>
 			<p>Add a CSS class to the component settings toolbar.</p>
 			<pre><code class="language-php">lasso_component_classes</code></pre>
 
+			<h5>Capability</h5>
 			<p>Add a CSS class to the post settings modal.</p>
 			<pre><code class="language-php">lasso_modal_settings_classes</code></pre>
 
+			<h5>Capability</h5>
 			<p>Add a CSS class to the post settings modal.</p>
 			<pre><code class="language-php">lasso_modal_post_classes</code></pre>
 
+			<h5>Capability</h5>
 			<p>Add a CSS class to the wrapper used to edit WordPress inserted images.</p>
 			<pre><code class="language-php">lasso_wpimg_classes</code></pre>
 
+			<h5>Capability</h5>
 			<p>Add an arrayof custom options that represent all custom components.</p>
-			<pre><code class="language-php">lasso_custom_options</code></pre> 
+			<pre><code class="language-php">lasso_custom_options</code></pre>
 
+			<h5>Capability</h5>
 			<p>Filter the capability level for the editor (default is edit_posts).</p>
 			<pre><code class="language-php">lasso_capabilities</code></pre>
 
 			<h3>Actions</h3><hr class="notop">
 
+			<h5>Capability</h5>
 			<p>Fired when a new gallery is created.</p>
 			<pre><code class="language-php">do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired when an existing gallery is saved.</p>
 			<pre><code class="language-php">do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired when the featured image is set.</p>
 			<pre><code class="language-php">do_action( 'lasso_featured_image_set', $postid, $image_id, $userid );</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired when a new post is created.</p>
 			<pre><code class="language-php">do_action( 'lasso_new_object', $postid, $object, $title, $userid );</code></pre>
 
+			<h5>Capability</h5>
 			<p>This is fired when an existing post is updated.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired when an existing post is saved.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_saved', $postid, $content, $userid );</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired when a post is published from draft.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_published', $postid, $content, $userid ;</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired when the title is updated.</p>
 			<pre><code class="language-php">do_action( 'lasso_title_updated', $postid, $title, $userid );</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired at the end of the list of components in the drop-up menu.</p>
 			<pre><code class="language-php">lasso_toolbar_components</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired at the end of the post settings form in the post settings modal.</p>
 			<pre><code class="language-php">lasso_modal_post_form</code></pre>
 
+			<h5>Capability</h5>
 			<p>Fired at the end of the post settings form in the post settings modal footer typically used for inserting hidden form fields.</p>
 			<pre><code class="language-php">lasso_modal_post_form_footer</code></pre>
 
@@ -439,7 +514,7 @@ function my_object_args( $args ) {
 	<script src="assets/js/jquery.js"></script>
 	<script src="assets/js/jquery.scrollTo.js"></script>
 	<script src="assets/js/jquery.easing.js"></script>
-	<script src="assets/js/prism.js"></script> 
+	<script src="assets/js/prism.js"></script>
 	<script>document.createElement('section');var duration='500',easing='swing';</script>
 	<script src="assets/js/script.js"></script>
 </body>
