@@ -299,8 +299,8 @@ noscript p{
 }
 #documenter_content .info{
 	padding:10px 10px 10px 30px;
-	border:1px solid #5bc0de;
-	background-color:#5bc0de;
+	border:1px solid rgba(0,122,171,0.7);
+	background-color:rgba(0,122,171,0.7);
 	background-image:url(img/info.png);
 	background-repeat:no-repeat;
 	background-position: 8px 11px;
