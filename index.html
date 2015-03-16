@@ -137,8 +137,8 @@
 			<h2>Plugin Documentation</h2>
 			<hr>
 			<ul>
-				<li><strong>Current Version:</strong> 0.8.6</li>
-				<li><strong>Docs Last Updated:</strong> 03/15/2015</li>
+				<li><strong>Current Version:</strong> 0.8.7</li>
+				<li><strong>Docs Last Updated:</strong> 03/16/2015</li>
 				<li><strong>Email:</strong> <a href="mailto:help@lasso.is">help@lasso.is</a></li>
 			</ul>
 			<p>Lasso is a front-end editor plugin for WordPress allows you to create, edit, and publish content on the front-end, and was originally designed to work closely with Aesop Story Engine, the free WordPress plugin for storytelling. This is the very same editor found on <a href="https://story.am">Story.AM</a>. Out-of-the-box it works on any post type whether it be posts, pages, or custom post types. It also features built-in support for editing standard images inserted via the WordPress post editor, as well as front-end support for changing the title and featured image.</p>
@@ -146,7 +146,7 @@
 			<p>The editor is a "toolbox overlay," so what you're seeing is 100% what you're getting, since you're editing the actual post content, and not just a preview of it.</p>
 			<p>Aesop Story Engine does not have to be active. In fact using the built-in filters and actions you can build an entirely new front-end editor specific to any use case.</p>
 
-			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML version of this. It's important to realize this when using Lasso. <br /><br /> Depending on your application, this may be desired. There's a setting to disable this shortcode conversion, which means you can use Lasso to build HTML layouts.</p>
+			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Lasso will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
 		</section>
 
 		<section id="installation">
@@ -171,8 +171,8 @@
 			<p class="info"><span>Note:</span> If multisite, network activate the plugin. This will create a submenu page under the Settings tab in Network-->Dashboard within WordPress. All subsites on the network will use the settings from this main network panel. This is how the editor is configured on Story.AM.</p>
 
 			<p class="info"><span>Note:</span> Lasso can be used independently of Aesop Story Engine. In fact, you can use the provided actions and filters to build your own components, and your own options within the Editor. The sky's the limit :).</p>
-
-			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML version of this. It's important to realize this when using Lasso.</p>
+			
+			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Lasso will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
 
 		</section>
 
@@ -191,6 +191,10 @@
 				<li>
 					<strong>Article Title Class</strong>
 					Lasso supports changing the title of the post (not to be confused with "the slug" in this case), by letting the user click into the title and type. When the user clicks elsewhere, the title is automatically saved. If you would like this feature, supply the CSS class of the post title.
+				</li>
+				<li>
+					<strong>Ignored Items to Save</strong>
+					Lasso saves the HTML of a post entirely. Some themes are built a bit differently, which will have additional markup within the same post content container. Plugins are the same way, they'll just add in the same post container. This setting allows you to list the CSS class names of markup that should be ignored. This makes Lasso compatable with 99.98% of all WordPress themes.
 				</li>
 				<li>
 					<strong>Disable Post Saving</strong>
@@ -212,8 +216,7 @@
 
 			<p class="info"><span>Note:</span> There is only one requirement of the theme utilizing Lasso; the content area must have the_content filter applied via WordPress. For 99% of themes this is fine, but there are those odd balls that do exist.</p>
 
-			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML version of this. It's important to realize this when using Lasso.</p>
-
+			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Lasso will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
 
 		</section>
 
@@ -265,9 +268,17 @@
 		<section id="filters">
 			<div class="page-header"><h3>Filters</h3><hr class="notop"></div>
 
-			<h5>Capability</h5>
+			<h5>Pre-flight notices</h5>
+			<p>Filter the notices shown to the user on activation</p>
+			<pre><code class="language-php">lasso_preflight_notices</code></pre>
+
+			<h5>Used on</h5>
 			<p>Filter where Lasso can be used and who can use it. By default this is set to is_singular() and lasso_user_can() which equates to edit_posts.</p>
 			<pre><code class="language-php">lasso_runs_on</code></pre>
+
+			<h5>Capability Level</h5>
+			<p>Filter the capability level for the editor (default is edit_post).</p>
+			<pre><code class="language-php">lasso_capabilities</code></pre>
 
 			<h5>Localized objects</h5>
 			<p>Filter the array of objects being localized with js</p>
@@ -495,21 +506,17 @@ function my_custom_options(){
 	return $settings;
 }</code></pre>
 
-			<h5>Capability Level</h5>
-			<p>Filter the capability level for the editor (default is edit_post).</p>
-			<pre><code class="language-php">lasso_capabilities</code></pre>
+			<h5>Tour slides</h5>
+			<p>Filter the slides available in the welcome tour</p>
+			<pre><code class="language-php">lasso_tour_slides</code></pre>
+
+			<h5>Automatically ignored items</h5>
+			<p>Filter the list of automatically ignored items. These items are different than are what is saved in settings-->ignore classes.</p>
+			<pre><code class="language-php">lasso_dont_save</code></pre>
 
 		</section>
 		<section id="actions">
 			<div class="page-header"><h3>Actions</h3><hr class="notop"></div>
-
-			<h5>New gallery created</h5>
-			<p>Fired when a new gallery is created.</p>
-			<pre><code class="language-php">do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</code></pre>
-
-			<h5>Existing gallery saved</h5>
-			<p>Fired when an existing gallery is saved.</p>
-			<pre><code class="language-php">do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</code></pre>
 
 			<h5>Featured image set</h5>
 			<p>Fired when the featured image is set.</p>
@@ -527,6 +534,14 @@ function my_custom_options(){
 			<p>Fired when an existing post is saved.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_saved', $postid, $content, $userid );</code></pre>
 
+			<h5>New gallery created</h5>
+			<p>Fired when a new gallery is created.</p>
+			<pre><code class="language-php">do_action( 'lasso_gallery_published', $postid, $gallery_ids, $userid );</code></pre>
+
+			<h5>Existing gallery saved</h5>
+			<p>Fired when an existing gallery is saved.</p>
+			<pre><code class="language-php">do_action( 'lasso_gallery_saved', $postid, $gallery_ids, $userid );</code></pre>
+
 			<h5>Post transitioned from draft to publish</h5>
 			<p>Fired when a post is published from draft.</p>
 			<pre><code class="language-php">do_action( 'lasso_post_published', $postid, $content, $userid ;</code></pre>
@@ -535,7 +550,27 @@ function my_custom_options(){
 			<p>Fired when the title is updated.</p>
 			<pre><code class="language-php">do_action( 'lasso_title_updated', $postid, $title, $userid );</code></pre>
 
-			<h5>Add components</h5>
+			<h5>Tour hidden</h5>
+			<p>Fired when the user decides to not have the Welcome Tour shown anymore</p>
+			<pre><code class="language-php">do_action( 'lasso_tour_hidden', $postid );</code></pre>
+
+			<h5>Before editor controls</h5>
+			<p>Fired before the start of the controls allowing you to place custom component icons in the tray.</p>
+			<pre><code class="language-php">do_action( 'lasso_editor_controls_before' );</code></pre>
+
+			<h5>After editor controls</h5>
+			<p>Fired after the controls allowing you to place custom component icons in the tray.</p>
+			<pre><code class="language-php">do_action( 'lasso_editor_controls_after' );</code></pre>
+
+			<h5>Before components</h5>
+			<p>Fired at the end of the list of components in the drop-up menu.</p>
+			<pre><code class="language-php">lasso_toolbar_components_before</code></pre>
+
+			<h5>After components</h5>
+			<p>Fired at the end of the list of components in the drop-up menu.</p>
+			<pre><code class="language-php">lasso_toolbar_components_after</code></pre>
+
+			<h5>Custom components</h5>
 			<p>Fired at the end of the list of components in the drop-up menu.</p>
 			<pre><code class="language-php">lasso_toolbar_components</code></pre>
 
