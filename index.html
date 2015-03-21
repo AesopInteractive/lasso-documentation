@@ -137,8 +137,8 @@
 			<h2>Plugin Documentation</h2>
 			<hr>
 			<ul>
-				<li><strong>Current Version:</strong> 0.8.7</li>
-				<li><strong>Docs Last Updated:</strong> 03/16/2015</li>
+				<li><strong>Current Version:</strong> 0.8.8</li>
+				<li><strong>Docs Last Updated:</strong> 03/21/2015</li>
 				<li><strong>Email:</strong> <a href="mailto:help@lasso.is">help@lasso.is</a></li>
 			</ul>
 			<p>Lasso is a front-end editor plugin for WordPress allows you to create, edit, and publish content on the front-end, and was originally designed to work closely with Aesop Story Engine, the free WordPress plugin for storytelling. This is the very same editor found on <a href="https://story.am">Story.AM</a>. Out-of-the-box it works on any post type whether it be posts, pages, or custom post types. It also features built-in support for editing standard images inserted via the WordPress post editor, as well as front-end support for changing the title and featured image.</p>
@@ -590,6 +590,10 @@ function my_custom_options(){
 			<h3>Defines</h3><hr class="notop">
 			<p>Adding this define will remove the License panel, and links to Lasso website and documentation. It essentially white-labeles the plugin so there's no confusion for the agency.</p>
 			<pre><code class="language-php">define('LASSO_AGENCY_MODE',true);</code></pre>
+
+			<h3>Ignore Class</h3><hr class="notop">
+			<p>Because Lasso saves the HTML of a post, there are some cases where your theme may have additional markup within it. To avoid saving this as HTML, put the class .lasso--ignore on any element within the post container.</p>
+			<pre><code class="language-css">.lasso--ignore</code></pre>
 
 		</section>
 		<section id="sample-addon">
