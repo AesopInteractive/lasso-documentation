@@ -140,6 +140,8 @@
 				<li><strong>Current Version:</strong> 0.8.8</li>
 				<li><strong>Docs Last Updated:</strong> 03/21/2015</li>
 				<li><strong>Email:</strong> <a href="mailto:help@lasso.is">help@lasso.is</a></li>
+				<li><strong>Bug Reports:</strong> <a href="https://github.com/AesopInteractive/lasso">https://github.com/AesopInteractive/lasso</a></li>
+				<li><strong>Documentation Bugs:</strong> <a href="https://github.com/AesopInteractive/lasso-documentation">https://github.com/AesopInteractive/lasso-documentation</a></li>
 			</ul>
 			<p>Lasso is a front-end editor plugin for WordPress allows you to create, edit, and publish content on the front-end, and was originally designed to work closely with Aesop Story Engine, the free WordPress plugin for storytelling. This is the very same editor found on <a href="https://story.am">Story.AM</a>. Out-of-the-box it works on any post type whether it be posts, pages, or custom post types. It also features built-in support for editing standard images inserted via the WordPress post editor, as well as front-end support for changing the title and featured image.</p>
 			<p>If you're utilizing Aesop Story Engine, the components can be moved freely around the post, and most component settings are adjusted in real-time. This includes gallery creation and editing, all done on the front-end.</p>
@@ -534,7 +536,7 @@ function my_custom_options(){
 			<p>Fired when an existing post is saved. Hook into this to override where the content from the editor is saved. For example, you could use Lasso on a custom field and save this to post meta.</p>
 			<pre><code class="language-php">
 add_action('lasso_post_saved', 'my_new_save', 10, 3 );
-function my_new_save($postid, $content, $userid) {
+function my_new_save( $postid, $content, $userid ) {
 
 	update_post_meta( $postid,'some_key', $content );
 
