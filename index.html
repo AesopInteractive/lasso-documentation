@@ -531,8 +531,15 @@ function my_custom_options(){
 			<pre><code class="language-php">do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </code></pre>
 
 			<h5>Existing post saved</h5>
-			<p>Fired when an existing post is saved.</p>
-			<pre><code class="language-php">do_action( 'lasso_post_saved', $postid, $content, $userid );</code></pre>
+			<p>Fired when an existing post is saved. Hook into this to override where the content from the editor is saved. For example, you could use Lasso on a custom field and save this to post meta.</p>
+			<pre><code class="language-php">
+add_action('lasso_post_saved', 'my_new_save', 10, 3 );
+function my_new_save($postid, $content, $userid) {
+
+	update_post_meta( $postid,'some_key', $content );
+
+}
+			</code></pre>
 
 			<h5>New gallery created</h5>
 			<p>Fired when a new gallery is created.</p>
