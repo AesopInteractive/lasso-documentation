@@ -137,8 +137,8 @@
 			<h2>Plugin Documentation</h2>
 			<hr>
 			<ul>
-				<li><strong>Current Version:</strong> 0.8.8</li>
-				<li><strong>Docs Last Updated:</strong> 03/21/2015</li>
+				<li><strong>Current Version:</strong> 0.9.4</li>
+				<li><strong>Docs Last Updated:</strong> 05/22/2015</li>
 				<li><strong>Email:</strong> <a href="mailto:help@lasso.is">help@lasso.is</a></li>
 				<li><strong>Bug Reports:</strong> <a href="https://github.com/AesopInteractive/lasso">https://github.com/AesopInteractive/lasso</a></li>
 				<li><strong>Documentation Bugs:</strong> <a href="https://github.com/AesopInteractive/lasso-documentation">https://github.com/AesopInteractive/lasso-documentation</a></li>
@@ -236,6 +236,27 @@
 
 			<h3>Creating Links</h3><hr class="notop">
 			<p>Links can be created by first highlighting the text, then selecting the link icon in the toolbar. Type in the URL, then click the check button save. To edit an existing link, double click a link while in edit mode, and the link will be supplied in the permalink drop-up area. Change the link, then select the check button save, and the link will be udpated.</p>
+
+			<img class="img" src="assets/img/making-links.gif">
+
+			<h3>Adding Categories & Tags</h3><hr class="notop">
+			<p>Categories can be added from a single post settings modal. Open the settings modal, then start typing in the category input area to select an existing category to add to the post. If the category isn't present, after typing press space or enter to add a new category. Post tags are added in the same manner. </p>
+
+			<img class="img" src="assets/img/making-links.gif">
+
+			<h3>Setting a Featured Image</h3><hr class="notop">
+			<p>If your current WordPress theme supports post-thumbnails, then you will be able to set the featured image for the post. To do so, open the settings modal, then click the "edit" icon over the image to select and insert an image. Click the "close" icon to delete the featured image. This is saved automatically and provides an indicator to show it's saving status.</p>
+
+			<img class="img" src="assets/img/making-links.gif">
+
+			<h3>Accessing Posts and Pages</h3><hr class="notop">
+			<p>All of your posts can be accessed by clicking the "list" icon in the Lasso toolbar. Upon clicking this button a modal will pop up showing your posts and pages. Clicking the "load more" button will load the next set of posts or pages. Custom post types are supported with a filter.</p>
+			<p>This feature requires the WP REST API plugin, which will soon be part of WordPress. After activating Lasso you'll be asked to confirm, and will direct you to install this plugin.</p>
+
+			<img class="img" src="assets/img/making-links.gif">
+
+			<h3>Adding Posts</h3><hr class="notop">
+			<p>Adding a new post can be done at anytime with the add new post button in the Lasso toolbar. This is present, along with the list all posts button, on all pages of your site when you are logged in (only displayed to those with the correct permissions).</p>
 
 			<img class="img" src="assets/img/making-links.gif">
 
@@ -516,6 +537,35 @@ function my_custom_options(){
 			<p>Filter the list of automatically ignored items. These items are different than are what is saved in settings-->ignore classes.</p>
 			<pre><code class="language-php">lasso_dont_save</code></pre>
 
+			<h2>Added 0.9.4</h2>
+
+			<h5>Settings Tabs</h5>
+			<p>With 0.9.4 a new Settings API has been introduced, that allows other plugins to easily create additional settings within the settings modal. This filter is different than the lasso_post_settings filter above. That filter adds your data as a serialized array into the lasso post settings field. This new API creates a dedicated tab, with a dedicated callback, allowing you to create integrations with other plugins like ACF, CMB, Ninja Forms, Gravity Forms, and more.</p>
+			<pre><code class="language-php">
+add_filter('lasso_modal_tabs','try_tabs',10,1);
+function try_tabs( $tabs ){
+
+    $tabs[] = array(
+        'name' => 'Tab',
+        'callback' => 'mytestcallback'
+    );
+
+    return $tabs;
+}
+function mytestcallback(){
+
+    ob_start();
+
+    $out = 'My Content';
+
+    return $out;
+}
+			</code></pre>
+
+			<h5>Post Types Support</h5>
+			<p>With 0.9.4 posts and pages are accessible from the front end. You can easily opt other post types in so that they will be listed here as well, with all appropriate callbacks taken care of.</p>
+			<pre><code class="language-php">add_filter( 'lasso_post_types', $array_of_post_types );</code></pre>
+
 		</section>
 		<section id="actions">
 			<div class="page-header"><h3>Actions</h3><hr class="notop"></div>
@@ -603,6 +653,7 @@ function my_new_save( $postid, $content, $userid ) {
 			<h3>Ignore Class</h3><hr class="notop">
 			<p>Because Lasso saves the HTML of a post, there are some cases where your theme may have additional markup within it. To avoid saving this as HTML, put the class .lasso--ignore on any element within the post container.</p>
 			<pre><code class="language-css">.lasso--ignore</code></pre>
+
 
 		</section>
 		<section id="sample-addon">
