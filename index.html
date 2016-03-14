@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Lasso - Plugin Documentation</title>
+	<title>Editus - Plugin Documentation</title>
 
 	<meta name="description" content="">
 	<meta name="author" content="Aesopinteractive LLC">
@@ -137,23 +137,23 @@
 			<h2>Plugin Documentation</h2>
 			<hr>
 			<ul>
-				<li><strong>Current Version:</strong> 0.9.4</li>
-				<li><strong>Docs Last Updated:</strong> 05/22/2015</li>
-				<li><strong>Email:</strong> <a href="mailto:help@lasso.is">help@lasso.is</a></li>
+				<li><strong>Current Version:</strong> 0.9.9.6</li>
+				<li><strong>Docs Last Updated:</strong> 03/14/2016</li>
+				<li><strong>Email:</strong> <a href="mailto:editus@aesopinteractive.com">editus@aesopinteractive.com</a></li>
 				<li><strong>Bug Reports:</strong> <a href="https://github.com/AesopInteractive/lasso">https://github.com/AesopInteractive/lasso</a></li>
 				<li><strong>Documentation Bugs:</strong> <a href="https://github.com/AesopInteractive/lasso-documentation">https://github.com/AesopInteractive/lasso-documentation</a></li>
 			</ul>
-			<p>Lasso is a front-end editor plugin for WordPress allows you to create, edit, and publish content on the front-end, and was originally designed to work closely with Aesop Story Engine, the free WordPress plugin for storytelling. This is the very same editor found on <a href="https://story.am">Story.AM</a>. Out-of-the-box it works on any post type whether it be posts, pages, or custom post types. It also features built-in support for editing standard images inserted via the WordPress post editor, as well as front-end support for changing the title and featured image.</p>
+			<p>Editus is a front-end editor plugin for WordPress allows you to create, edit, and publish content on the front-end, and was originally designed to work closely with Aesop Story Engine, the free WordPress plugin for storytelling. This is the very same editor found on <a href="https://story.am">Story.AM</a>. Out-of-the-box it works on any post type whether it be posts, pages, or custom post types. It also features built-in support for editing standard images inserted via the WordPress post editor, as well as front-end support for changing the title and featured image.</p>
 			<p>If you're utilizing Aesop Story Engine, the components can be moved freely around the post, and most component settings are adjusted in real-time. This includes gallery creation and editing, all done on the front-end.</p>
 			<p>The editor is a "toolbox overlay," so what you're seeing is 100% what you're getting, since you're editing the actual post content, and not just a preview of it.</p>
 			<p>Aesop Story Engine does not have to be active. In fact using the built-in filters and actions you can build an entirely new front-end editor specific to any use case.</p>
 
-			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Lasso will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
+			<p class="warning"><span>Warning:</span> Editus saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Editus will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
 		</section>
 
 		<section id="installation">
-			<div class="page-header"><h3>Installing Lasso</h3><hr class="notop"></div>
-			<p>Two ways to install. Pick your poison. Aesop Story Engine is not required in order to use Lasso, but it is required if you want to utilize movable story components (unless using custom components).</p>
+			<div class="page-header"><h3>Installing Editus</h3><hr class="notop"></div>
+			<p>Two ways to install. Pick your poison. Aesop Story Engine is not required in order to use Editus, but it is required if you want to utilize movable story components (unless using custom components).</p>
 
 			<p><strong>Easy (through WordPress)</strong></p>
 			<ol>
@@ -166,21 +166,21 @@
 			<p><strong>Not So Easy (FTP)</strong></p>
 			<ol>
 				<li>Unzip the file and upload into the /wp-content/plugins/ directory using an FTP client of your choice</li>
-				<li>Once uploaded, head into your WordPress administration area, and activate Lasso under WordPress-->Plugins</li>
+				<li>Once uploaded, head into your WordPress administration area, and activate Editus under WordPress-->Plugins</li>
 				<li>Install Aesop Story Engine if you wish to use the movable story components</li>
 			</ol>
 
 			<p class="info"><span>Note:</span> If multisite, network activate the plugin. This will create a submenu page under the Settings tab in Network-->Dashboard within WordPress. All subsites on the network will use the settings from this main network panel. This is how the editor is configured on Story.AM.</p>
 
-			<p class="info"><span>Note:</span> Lasso can be used independently of Aesop Story Engine. In fact, you can use the provided actions and filters to build your own components, and your own options within the Editor. The sky's the limit :).</p>
+			<p class="info"><span>Note:</span> Editus can be used independently of Aesop Story Engine. In fact, you can use the provided actions and filters to build your own components, and your own options within the Editor. The sky's the limit :).</p>
 			
-			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Lasso will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
+			<p class="warning"><span>Warning:</span> Editus saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Editus will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
 
 		</section>
 
 		<section id="setup">
 			<div class="page-header"><h3>Getting Things Setup</h3><hr class="notop"></div>
-			<p>Whether you have network activated Lasso on a multisite network, or simply have it activated on a single-site, the setup is still the same. At minimum, the editor requires the <strong>Article Class</strong>, or, the CSS class of the main container holding the post. Everything else is optional.</p>
+			<p>Whether you have network activated Editus on a multisite network, or simply have it activated on a single-site, the setup is still the same. At minimum, the editor requires the <strong>Article Class</strong>, or, the CSS class of the main container holding the post. Everything else is optional.</p>
 			<ul>
 				<li>
 					<strong>Article Class</strong>
@@ -188,19 +188,19 @@
 				</li>
 				<li>
 					<strong>Featured Image Class</strong>
-					If your specific theme supports thumbnail images, or "Featured Post" images, and that image is set as a background-image, then supply the CSS class of the container that's holding the image. Lasso will append an icon on that image that will allow users to open the media library and select a new image. After a user selects the image, it is saved automatically.
+					If your specific theme supports thumbnail images, or "Featured Post" images, and that image is set as a background-image, then supply the CSS class of the container that's holding the image. Editus will append an icon on that image that will allow users to open the media library and select a new image. After a user selects the image, it is saved automatically.
 				</li>
 				<li>
 					<strong>Article Title Class</strong>
-					Lasso supports changing the title of the post (not to be confused with "the slug" in this case), by letting the user click into the title and type. When the user clicks elsewhere, the title is automatically saved. If you would like this feature, supply the CSS class of the post title.
+					Editus supports changing the title of the post (not to be confused with "the slug" in this case), by letting the user click into the title and type. When the user clicks elsewhere, the title is automatically saved. If you would like this feature, supply the CSS class of the post title.
 				</li>
 				<li>
 					<strong>Ignored Items to Save</strong>
-					Lasso saves the HTML of a post entirely. Some themes are built a bit differently, which will have additional markup within the same post content container. Plugins are the same way, they'll just add in the same post container. This setting allows you to list the CSS class names of markup that should be ignored. This makes Lasso compatable with 99.98% of all WordPress themes.
+					Editus saves the HTML of a post entirely. Some themes are built a bit differently, which will have additional markup within the same post content container. Plugins are the same way, they'll just add in the same post container. This setting allows you to list the CSS class names of markup that should be ignored. This makes Editus compatable with 99.98% of all WordPress themes.
 				</li>
 				<li>
 					<strong>Disable Post Saving</strong>
-					By default Lasso will save ALL HTML located within the_content to the current post id. This means that if you have a third party shortcode, it will save the HTML version of this and will udpate the database for that page or post. Please be aware of this when saving a post or page. Of course you can always use the WordPress revision system, and we'll be working to make this easier in the future, but in the time being, be aware that it saves <em>ALL HTML</em>. If you do not want this default behavior, then toggle this box. This means that you'll be using the provided actions to "hook in" and save the content to wherever it is that you want to save it. For example, you could have a version of the editor saving custom field data.
+					By default Editus will save ALL HTML located within the_content to the current post id. This means that if you have a third party shortcode, it will save the HTML version of this and will udpate the database for that page or post. Please be aware of this when saving a post or page. Of course you can always use the WordPress revision system, and we'll be working to make this easier in the future, but in the time being, be aware that it saves <em>ALL HTML</em>. If you do not want this default behavior, then toggle this box. This means that you'll be using the provided actions to "hook in" and save the content to wherever it is that you want to save it. For example, you could have a version of the editor saving custom field data.
 				</li>
 				<li>
 					<strong>Disable Post Settings</strong>
@@ -212,13 +212,13 @@
 				</li>
 				<li>
 					<strong>Disable Aesop Component Conversion</strong>
-					Lasso can save the content's HTML completely. By default, we'll convert Aesop Story Engine shortcodes into HTML and back. If you do not want this to happen, meaning, if you do not have Aesop Story Engine active, or you are not using it in your application, then toggle this box. This means that all HTML will be saved and no shortcodes will be converted.
+					Editus can save the content's HTML completely. By default, we'll convert Aesop Story Engine shortcodes into HTML and back. If you do not want this to happen, meaning, if you do not have Aesop Story Engine active, or you are not using it in your application, then toggle this box. This means that all HTML will be saved and no shortcodes will be converted.
 				</li>
 			</ul>
 
-			<p class="info"><span>Note:</span> There is only one requirement of the theme utilizing Lasso; the content area must have the_content filter applied via WordPress. For 99% of themes this is fine, but there are those odd balls that do exist.</p>
+			<p class="info"><span>Note:</span> There is only one requirement of the theme utilizing Editus; the content area must have the_content filter applied via WordPress. For 99% of themes this is fine, but there are those odd balls that do exist.</p>
 
-			<p class="warning"><span>Warning:</span> Lasso saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Lasso will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
+			<p class="warning"><span>Warning:</span> Editus saves the HTML of a post object into the database. If Aesop Story Engine is activated it converts these shortcodes into HTML on the fly. The only drawback that you need to be aware of, is this; if your post has anything other than text or an Aesop Story Engine component, it will save the HTML of this into the post/page. There's a setting (outline below) that let's you specify the CSS class names of these items so that Editus will ignore them when it saves. <br /><br /> Out of the box we support Jetpack sharing.</p>
 
 		</section>
 
@@ -250,13 +250,13 @@
 			<img class="img" src="assets/img/making-links.gif">
 
 			<h3>Accessing Posts and Pages</h3><hr class="notop">
-			<p>All of your posts can be accessed by clicking the "list" icon in the Lasso toolbar. Upon clicking this button a modal will pop up showing your posts and pages. Clicking the "load more" button will load the next set of posts or pages. Custom post types are supported with a filter.</p>
-			<p>This feature requires the WP REST API plugin, which will soon be part of WordPress. After activating Lasso you'll be asked to confirm, and will direct you to install this plugin.</p>
+			<p>All of your posts can be accessed by clicking the "list" icon in the Editus toolbar. Upon clicking this button a modal will pop up showing your posts and pages. Clicking the "load more" button will load the next set of posts or pages. Custom post types are supported with a filter.</p>
+			<p>This feature requires the WP REST API plugin, which will soon be part of WordPress. After activating Editus you'll be asked to confirm, and will direct you to install this plugin.</p>
 
 			<img class="img" src="assets/img/making-links.gif">
 
 			<h3>Adding Posts</h3><hr class="notop">
-			<p>Adding a new post can be done at anytime with the add new post button in the Lasso toolbar. This is present, along with the list all posts button, on all pages of your site when you are logged in (only displayed to those with the correct permissions).</p>
+			<p>Adding a new post can be done at anytime with the add new post button in the Editus toolbar. This is present, along with the list all posts button, on all pages of your site when you are logged in (only displayed to those with the correct permissions).</p>
 
 			<img class="img" src="assets/img/making-links.gif">
 
@@ -295,13 +295,26 @@
 			<p>Filter the notices shown to the user on activation</p>
 			<pre><code class="language-php">lasso_preflight_notices</code></pre>
 
-			<h5>Used on</h5>
-			<p>Filter where Lasso can be used and who can use it. By default this is set to is_singular() and lasso_user_can() which equates to edit_posts.</p>
-			<pre><code class="language-php">lasso_runs_on</code></pre>
+			<h5>Article Class</h5>
+			<p>Provide the CSS class (including the preceding dot) of container that holds the post. This should be the first parent container class that holds the_content. 
+			The plugin options settings from the Dashboard will take precendence over this filter.
+			Therefore, to use this filter keep the Article Class option in the Dashboard empty.</p>
+			<pre><code class="language-php">lasso_content_class</code></pre>
 
-			<h5>Capability Level</h5>
-			<p>Filter the capability level for the editor (default is edit_post).</p>
-			<pre><code class="language-php">lasso_capabilities</code></pre>
+			<h5>Title Class</h5>
+			<p>Provide the CSS class for the post title. This will enable you to update the title of the post by clicking and typing. The plugin options settings from the Dashboard will take precendence over this filter.
+			Therefore, to use this filter keep the Title Class option in the Dashboard empty.</p>
+			<pre><code class="language-php">lasso_title_class</code></pre>
+			
+			<h5>Featured Image Class</h5>
+			<p>Provide the CSS class for the post title. This will enable you to update the title of the post by clicking and typing. This will enable you to update the title of the post by clicking and typing. The plugin options settings from the Dashboard will take precendence over this filter.
+			Therefore, to use this filter keep the Featured Image Class option in the Dashboard empty.</p>
+			<pre><code class="language-php">lasso_featured_image_class</code></pre>
+
+			<h5>Ignored Items to Save</h5>
+			<p>If your post container holds additional markup, list the css class names (comma separated, including the dot) of those items. 
+			When you enter the editor, Editus will remove (NOT delete) these items so that it does not save them as HTML. </p>
+			<pre><code class="language-php">lasso_dont_save</code></pre>
 
 			<h5>Localized objects</h5>
 			<p>Filter the array of objects being localized with js</p>
@@ -540,7 +553,8 @@ function my_custom_options(){
 			<h2>Added 0.9.4</h2>
 
 			<h5>Settings Tabs</h5>
-			<p>With 0.9.4 a new Settings API has been introduced, that allows other plugins to easily create additional settings within the settings modal. This filter is different than the lasso_post_settings filter above. That filter adds your data as a serialized array into the lasso post settings field. This new API creates a dedicated tab, with a dedicated callback, allowing you to create integrations with other plugins like ACF, CMB, Ninja Forms, Gravity Forms, and more.</p>
+			<p>With 0.9.4 a new Settings API has been introduced, that allows other plugins to easily create additional settings within the settings modal. This filter is different than the lasso_post_settings filter above. 
+			That filter adds your data as a serialized array into the Editus post settings field. This new API creates a dedicated tab, with a dedicated callback, allowing you to create integrations with other plugins like ACF, CMB, Ninja Forms, Gravity Forms, and more.</p>
 			<pre><code class="language-php">
 add_filter('lasso_modal_tabs','try_tabs',10,1);
 function try_tabs( $tabs ){
@@ -583,7 +597,7 @@ function mytestcallback(){
 			<pre><code class="language-php">do_action( 'lasso_post_updated', $postid, $slug, $status, $userid ); </code></pre>
 
 			<h5>Existing post saved</h5>
-			<p>Fired when an existing post is saved. Hook into this to override where the content from the editor is saved. For example, you could use Lasso on a custom field and save this to post meta.</p>
+			<p>Fired when an existing post is saved. Hook into this to override where the content from the editor is saved. For example, you could use Editus on a custom field and save this to post meta.</p>
 			<pre><code class="language-php">
 add_action('lasso_post_saved', 'my_new_save', 10, 3 );
 function my_new_save( $postid, $content, $userid ) {
@@ -643,15 +657,15 @@ function my_new_save( $postid, $content, $userid ) {
 
 			<h3>Pluggable Functions</h3><hr class="notop">
 
-			<p>Determines who can use the editor. By default this returns is_user_logged_in() and current_user_can('edit_post')</p>
+			<p>Determines who can use the editor. By default this returns is_user_logged_in() and current_user_can('edit_post'). You can use this filter to give selective rights to different users.</p>
 			<pre><code class="language-php">lasso_user_can</code></pre>
 
 			<h3>Defines</h3><hr class="notop">
-			<p>Adding this define will remove the License panel, and links to Lasso website and documentation. It essentially white-labeles the plugin so there's no confusion for the agency.</p>
+			<p>Adding this define will remove the License panel, and links to Editus website and documentation. It essentially white-labeles the plugin so there's no confusion for the agency.</p>
 			<pre><code class="language-php">define('LASSO_AGENCY_MODE',true);</code></pre>
 
 			<h3>Ignore Class</h3><hr class="notop">
-			<p>Because Lasso saves the HTML of a post, there are some cases where your theme may have additional markup within it. To avoid saving this as HTML, put the class .lasso--ignore on any element within the post container.</p>
+			<p>Because Editus saves the HTML of a post, there are some cases where your theme may have additional markup within it. To avoid saving this as HTML, put the class .lasso--ignore on any element within the post container.</p>
 			<pre><code class="language-css">.lasso--ignore</code></pre>
 
 
