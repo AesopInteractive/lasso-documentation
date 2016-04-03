@@ -299,19 +299,34 @@
 			<p>A sample filter code and registration: </p>
 			<pre><code class="language-php">
 			// only activate if the post type is 'post'
-			function editus_user_can( $result, $action, $postid ) {
-				if (!$result) {
-					return false;
-				} else {
-					$post_type = get_post_type();
-					if ($post_type == 'post') {
-						return true;
-					}
-					$result = false;
-					return $result;
-				}
-			}
-			add_filter( 'lasso_user_can_filter', 'editus_user_can', 10, 3 );</code></pre>
+function editus_user_can( $result, $action, $postid ) {
+	if (!$result) {
+		return false;
+	} else {
+		$post_type = get_post_type();
+		if ($post_type == 'post') {
+			return true;
+		}
+		$result = false;
+		return $result;
+	}
+}
+add_filter( 'lasso_user_can_filter', 'editus_user_can', 10, 3 );</code></pre>
+			
+			<h5>Allowed Post Types</h5>
+			<p>This filter can be used to add or remove post types allowed for Editus. If you have custom post types you should use this filter to add custom post types.</p>
+			<pre><code class="language-php">lasso_allowed_post_types</code></pre>
+			<p>An example usage:</p>
+			<pre><code class="language-php">
+// this function limits Editus to 'post' instead of allowing 'page' types
+function my_post_types($arr)
+{
+	return array( 'post');
+}
+
+add_filter( 'lasso_allowed_post_types', 'my_post_types' );
+			</code></pre>
+
 			
 
 			<h5>Pre-flight notices</h5>
@@ -323,21 +338,49 @@
 			The plugin options settings from the Dashboard will take precendence over this filter.
 			Therefore, to use this filter keep the Article Class option in the Dashboard empty.</p>
 			<pre><code class="language-php">lasso_content_class</code></pre>
+			<p>An example usage:</p>
+			<pre><code class="language-php">
+add_filter('lasso_content_class', 'my_content_class', 10, 1 );
+function my_content_class( $args ) {
+		
+	return '.mycontent-class';
+}</code></pre>
 
 			<h5>Title Class</h5>
 			<p>Provide the CSS class for the post title. This will enable you to update the title of the post by clicking and typing. The plugin options settings from the Dashboard will take precendence over this filter.
 			Therefore, to use this filter keep the Title Class option in the Dashboard empty.</p>
 			<pre><code class="language-php">lasso_title_class</code></pre>
+			<p>An example usage:</p>
+			<pre><code class="language-php">
+add_filter('lasso_title_class', 'my_title_class', 10, 1 );
+function my_title_class( $args ) {
+		
+	return '.mytitle-class';
+}</code></pre>
 			
 			<h5>Featured Image Class</h5>
 			<p>Provide the CSS class for the post title. This will enable you to update the title of the post by clicking and typing. This will enable you to update the title of the post by clicking and typing. The plugin options settings from the Dashboard will take precendence over this filter.
 			Therefore, to use this filter keep the Featured Image Class option in the Dashboard empty.</p>
 			<pre><code class="language-php">lasso_featured_image_class</code></pre>
+			<p>An example usage:</p>
+			<pre><code class="language-php">
+add_filter('lasso_featured_image_class', 'my_featured_image_class', 10, 1 );
+function my_featured_image_class( $args ) {
+		
+	return '.myimage-class';
+}</code></pre>
 
 			<h5>Ignored Items to Save</h5>
 			<p>If your post container holds additional markup, list the css class names (comma separated, including the dot) of those items. 
 			When you enter the editor, Editus will remove (NOT delete) these items so that it does not save them as HTML. </p>
 			<pre><code class="language-php">lasso_dont_save</code></pre>
+			<p>An example usage:</p>
+			<pre><code class="language-php">
+add_filter('lasso_dont_save', 'my_ignored_class', 10, 1 );
+function my_ignored_class( $args ) {
+		
+	return '.myignored-class1, .myignored-class2';
+}</code></pre>
 
 			<h5>Localized objects</h5>
 			<p>Filter the array of objects being localized with js</p>
@@ -421,36 +464,36 @@ function my_object_publish_args( $args ) {
 
 			<h5>Updating post title</h5>
 			<p>Filter the array of arguments for updating a post object title.</p>
-<pre><code class="language-php">
-add_filter('lasso_title_updated_args', 'my_title_updated_args', 10, 1 );
-function my_title_updated_args( $args ) {
-	// your new args
-	$my_args = array(
-	    'foo' => 'bar'
-	);
-	// return and merge with the existing args
-	return array_merge( $args, $my_args );
-}</code></pre>
+			<pre><code class="language-php">
+			add_filter('lasso_title_updated_args', 'my_title_updated_args', 10, 1 );
+			function my_title_updated_args( $args ) {
+				// your new args
+				$my_args = array(
+					'foo' => 'bar'
+				);
+				// return and merge with the existing args
+				return array_merge( $args, $my_args );
+			}</code></pre>
 
 			<h5>Available components</h5>
 			<p>Filter the list of components available to the editor. Here are some examples.</p>
-<pre><code class="language-php">
-add_filter('lasso_components', 'my_components');
-function my_components() {
-	// return your own options or merge with array_merge
-	$components = array(
-		'foo' => array(
-			'name' => 'Name of Component',
-			'content' => callback()
-		),
-		'bar' => array(
-			'name' => 'Another Component',
-			'content' => callback();
-		)
-	);
+			<pre><code class="language-php">
+			add_filter('lasso_components', 'my_components');
+			function my_components() {
+				// return your own options or merge with array_merge
+				$components = array(
+					'foo' => array(
+						'name' => 'Name of Component',
+						'content' => callback()
+					),
+					'bar' => array(
+						'name' => 'Another Component',
+						'content' => callback();
+					)
+				);
 
-	return $components;
-}</code></pre>
+				return $components;
+			}</code></pre>
 
 			<h5>Add CSS class to control bar</h5>
 			<p>Add a CSS class to the control bar.</p>
