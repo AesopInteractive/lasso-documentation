@@ -137,8 +137,8 @@
 			<h2>Plugin Documentation</h2>
 			<hr>
 			<ul>
-				<li><strong>Current Version:</strong> 0.9.9.6</li>
-				<li><strong>Docs Last Updated:</strong> 03/14/2016</li>
+				<li><strong>Current Version:</strong> 0.9.9.7</li>
+				<li><strong>Docs Last Updated:</strong> 04/03/2016</li>
 				<li><strong>Email:</strong> <a href="mailto:editus@aesopinteractive.com">editus@aesopinteractive.com</a></li>
 				<li><strong>Bug Reports:</strong> <a href="https://github.com/AesopInteractive/lasso">https://github.com/AesopInteractive/lasso</a></li>
 				<li><strong>Documentation Bugs:</strong> <a href="https://github.com/AesopInteractive/lasso-documentation">https://github.com/AesopInteractive/lasso-documentation</a></li>
@@ -291,6 +291,28 @@
 
 		<section id="filters">
 			<div class="page-header"><h3>Filters</h3><hr class="notop"></div>
+			
+			<h5>Editus Activation</h5>
+			<p>This filter can be used to control when Editus is activated. The filter function takes three parameters: ($result, $action, $postid)</p>
+			<p>$result is a true/false value returned by the default lasso_user_can() function.</p><p> $action can be one of the following values: 'delete_post','publish_posts','edit_posts','delete_others_posts' </p>
+			<pre><code class="language-php">lasso_user_can_filter</code></pre>
+			<p>A sample filter code and registration: </p>
+			<pre><code class="language-php">
+			// only activate if the post type is 'post'
+			function editus_user_can( $result, $action, $postid ) {
+				if (!$result) {
+					return false;
+				} else {
+					$post_type = get_post_type();
+					if ($post_type == 'post') {
+						return true;
+					}
+					$result = false;
+					return $result;
+				}
+			}
+			add_filter( 'lasso_user_can_filter', 'editus_user_can', 10, 3 );</code></pre>
+			
 
 			<h5>Pre-flight notices</h5>
 			<p>Filter the notices shown to the user on activation</p>
@@ -658,7 +680,8 @@ function my_new_save( $postid, $content, $userid ) {
 
 			<h3>Pluggable Functions</h3><hr class="notop">
 
-			<p>Determines who can use the editor. By default this returns is_user_logged_in() and current_user_can('edit_post'). You can use this filter to give selective rights to different users.</p>
+			<p>Determines who can use the editor and when the editor is activated. By default this function returns (is_user_logged_in() and current_user_can('edit_post')). 
+			As of the ver 0.9.9.7, it is recommned to use the filter 'lasso_user_can_filter' instead of overriding this function, if the default behavior needs to be changed.</p>
 			<pre><code class="language-php">lasso_user_can</code></pre>
 
 			<h3>Defines</h3><hr class="notop">
