@@ -300,15 +300,17 @@
 			<pre><code class="language-php">
 			// only activate if the post type is 'post'
 function editus_user_can( $result, $action, $postid ) {
-	if (!$result) {
+	if (!$result ) {
 		return false;
 	} else {
 		$post_type = get_post_type();
+		if (empty($post_type)) { // this is necessary for save operation
+		    return $result;
+		}
 		if ($post_type == 'post') {
 			return true;
 		}
-		$result = false;
-		return $result;
+		return false;
 	}
 }
 add_filter( 'lasso_user_can_filter', 'editus_user_can', 10, 3 );</code></pre>
